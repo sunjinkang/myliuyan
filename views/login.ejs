@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Jumbotron Template for Bootstrap</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <![endif]-->
+    <style>
+        .hide{display: none;}
+        .show{display: inline-block;width: 100px;height: 100px;margin-bottom: -80px;}
+        .container>h1{display: inline-block;margin-left:40px;}
+        .jumbotron{margin-top:40px;}
+        .jumbotron>div>.container{margin-left:50%;margin-top:100px;}
+        .jumbotron>div>.container>a>img{width:100px;height:100px;margin-top:-40px;}
+        .jumbotron>.container{font-size: 15px;margin-left: 20%;}
+        .warn>h3{text-align: center;margin-top: 150px;}
+        .active{}
+    </style>
+</head>
+
+<body>
+<% include header.ejs%>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="warn"><h3><%=warn%></h3></div>
+<div class="jumbotron">
+    <div class="col-lg-6">
+        <div class="container">
+            <a href="/change"><img src="<%=src%>" alt="" class="<%=status%>"></a><h1>欢迎！</h1><br>
+            <p>请先登录，再留言！</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">注册 &raquo;</a></p>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="jumbotron">
+            <div class="container">
+                <h3>已有账号登录</h3>
+                <form action="/doLogin">
+                    姓名: <input type="text" name="name" placeholder="姓名"><br><br>
+                    密码: <input type="password" name="pwd" placeholder="密码"><br><br>
+                    <input type="submit" value="登录"><br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <nav aria-label="Page navigation" class="nav">
+        <ul class="pagination">
+            <%for(var i=1;i<=count;i++){%>
+            <li data-page="<%=i%>"><a href="#"><%=i%></a></li>
+            <%}%>
+        </ul>
+    </nav>
+    <!-- Example row of columns -->
+    <div class="row">
+
+        <!--<div class="container">-->
+        <div id="showWords">
+
+        </div>
+        <!--</div>-->
+    </div>
+
+    <hr>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/template" id="moban">
+    <div class="col-md-4">
+        <a href=""><img src="{{=avatar}}" style="width: 50px;height: 50px;"></a>
+        【姓名】{{=name}}<br>
+        【留言】{{=words}}<br>
+        【时间】{{=time}}<br>
+        <a href="/delete?id={{=_id}}">删除</a><br><br><br>
+    <div>
+</script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/underscore-noconflic-min.js"></script>
+<script src="note.js"></script>
+</body>
+</html>

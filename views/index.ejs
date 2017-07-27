@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/jumbotron.css" rel="stylesheet">
+    <style>
+        .hide{display: none;}
+        .show{display: inline-block;width:50px;height:50px;margin-bottom: -80px;}
+        .container>h1{display: inline-block;margin-left:50px;}
+        .jumbotron{margin-top:40px;}
+        .jumbotron>div>.container{margin-left:50%;margin-top:100px;}
+        .jumbotron>.container{font-size: 15px;}
+        /*.name{width:350px;}*/
+        .words{width:550px;height:200px;margin-left:5%;}
+        .sub{background-color: #4cae4c;width: 50px;height: 35px;color:white;margin-left:8%;}
+        #success, #fail {
+            display: none;
+        }
+        /*form>p>b,h1,.nav,.container{margin-left:5%;}*/
+        /*.nav{margin-left:5%;}*/
+    </style>
+</head>
+<body>
+<% include header.ejs%>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+        <div class="container">
+            <a href="/change"><img src="<%=avatar%>" alt="" class="<%=status%>"></a><h1><%=username%></h1>
+            <form action="/insert">
+                <!--<p>-->
+                    <!--<b>姓名</b><br> <input type="text" name="name" placeholder="姓名" class="name">-->
+                <!--</p>-->
+                <p>
+                    <b>留言</b><br> <textarea name="words" class="words"></textarea>
+                </p>
+                <p>
+                    <input type="submit" value="提交" class="sub">
+                </p>
+            </form>
+        </div>
+
+</div>
+
+<div class="container">
+    <nav aria-label="Page navigation" class="nav">
+        <ul class="pagination">
+            <%for(var i=1;i<=count;i++){%>
+            <li data-page="<%=i%>"><a href="#"><%=i%></a></li>
+            <%}%>
+        </ul>
+    </nav>
+    <!-- Example row of columns -->
+    <div class="row">
+
+            <!--<div class="container">-->
+                <div id="showWords">
+
+                </div>
+            <!--</div>-->
+    </div>
+
+    <hr>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/template" id="moban">
+    <div class="col-md-4">
+    <a href=""><img src="{{=avatar}}" style="width: 50px;height: 50px;"></a>
+    【姓名】{{=name}}<br>
+    【留言】{{=words}}<br>
+    【时间】{{=time}}<br>
+    <a href="/delete?id={{=_id}}">删除</a><br><br><br>
+    <div>
+</script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/underscore-noconflic-min.js"></script>
+<script src="note.js"></script>
+
+</body>
+</html>
+
